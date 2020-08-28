@@ -10,6 +10,6 @@
          yum: name={{ httpd_packages  }} state=latest
        - name: "apache_test_message"
          shell: echo {{ apache_test_message }} > /var/www/html/index.html
-   handlers:
+  handlers:
        - name: restart httpd
          service: name=httpd state=restarted enabled=yes
