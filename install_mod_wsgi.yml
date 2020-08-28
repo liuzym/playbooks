@@ -1,15 +1,15 @@
 ---
 - hosts: all
-   vars:
+  vars:
    - httpd_packages:
       - mod_wsgi
       - httpd
    - apache_test_message: 'http test'
-   tasks:
+  tasks:
        - name: "httpd_packages"
          yum: name={{ httpd_packages  }} state=latest
        - name: "apache_test_message"
          shell: echo {{ apache_test_message }} > /var/www/html/index.html
-    handlers:
+   handlers:
        - name: restart httpd
          service: name=httpd state=restarted enabled=yes
